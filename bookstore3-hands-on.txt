@@ -1,0 +1,74 @@
+New Project Maven Web App
+Server name Tomcat... user pass
+
+Dependencies: pom.xml
+1- Jakartaee Enteprise Edition (check ver plugin maven-war-plugin)
+2- Jersey Servlet Container: receive url API, special url (instead of html). Return Json
+3- Jersey Inject HK2: Brigde between Server (Tomcat) <==> Jersey
+4- Jersey Media Jackson (Json converter): java  object <==> json
+public class Student {
+    private String id;
+    private String name;
+    constructor (id, name) {}
+    public void method () {}
+}
+Student st = new Student("SE123456", "NGUYEN AN");
+==============
+{
+    "id": "SE123456",
+    "name": "NGUYEN AN"
+}
+
+5- JDBC Microsoft SQLServer: java code <==> DB,  coresponds to JDK ver (Project property - Sources - Binary format)
+
+6- Lombok project(optional): help boiled plate code (e.g getter, setter, constructor, hashCode....)
+==================================================
+
+Packages in SourcesPacks folder: com.vidaibao.bookstore.util (connect db), dao, dto, config, resources, resources.v1...
+
+config: add class BookApplication extends ResourceConfig (jersey.server); 
+@ApplicationPath("api")
+public class BookApplication extends ResourceConfig{
+    public BookApplication() {
+        // use comma ',' between packages
+        //  Tomcat Deploy will scan this function likes "main()" of API
+        packages("com.vidaibao.learning.fullstack.bookstorenb.resources"); // includes sub folder v1, v2
+    }
+}
+
+when s.o. send url/api this class responses then Mapping to other class
+Ex: 
+url/api/books : GET all book in store
+url/api/orders : GET all orders 
+url/api/authors/nguyen-an : GET info of nguyen an author
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
